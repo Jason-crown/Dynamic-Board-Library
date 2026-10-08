@@ -50,4 +50,41 @@
 #define ANSI_COLOR_CYAN_BRIGHT_BG    "\x1b[106m"
 #define ANSI_COLOR_WHITE_BRIGHT_BG   "\x1b[107m
 
+typedef struct {
+    int width;
+    int height;
+    char **cells;
+} Board;
+
+typedef struct {
+    int x;
+    int y;
+} Position;
+
+typedef struct {
+    Position position;
+    char symbol;
+    char color[20];
+} Piece;
+
+typedef struct {
+    Piece *pieces;
+    int count;
+} PieceList;
+
+typedef struct {
+    Board board;
+    PieceList pieceList;
+} GameState;
+
+typedef struct {
+    char *name;
+    GameState gameState;
+} Player;
+
+typedef struct {
+    Player *players;
+    int count;
+} PlayerList;
+
 #endif
