@@ -21,3 +21,12 @@ void createBoard(int width, int height) {
     free(board->cells);
     free(board);
 }
+
+void printBoard(Board *board) {
+    for (int i = 0; i < board->height; i++) {
+        for (int j = 0; j < board->width; j++) {
+            printf("%c ", board->cells[i][j]);
+        }
+        printf("\n");
+    }
+}
