@@ -48,7 +48,7 @@
 #define ANSI_COLOR_BLUE_BRIGHT_BG    "\x1b[104m"
 #define ANSI_COLOR_MAGENTA_BRIGHT_BG "\x1b[105m"
 #define ANSI_COLOR_CYAN_BRIGHT_BG    "\x1b[106m"
-#define ANSI_COLOR_WHITE_BRIGHT_BG   "\x1b[107m
+#define ANSI_COLOR_WHITE_BRIGHT_BG   "\x1b[107m"
 
 typedef struct {
     int width;

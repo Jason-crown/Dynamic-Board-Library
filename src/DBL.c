@@ -1,4 +1,4 @@
-#include "DBL.h"
+#include "Dbl.h"
 
 void createBoard(int width, int height) {
     Board *board = (Board *)malloc(sizeof(Board));

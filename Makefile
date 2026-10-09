@@ -1,35 +1,35 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -pedantic
+
+CFLAGS = -std=c99 -Wall -Wextra -pedantic
+CPPFLAGS = -Iinclude
+
 TARGET = Dbl
-OBJ = Dbl.o
-EXE = Dbl.exe
+OBJ = src/main.o src/Dbl.o
 
 ifeq ($(OS), Windows_NT)
-    DELETE = del
+    DELETE = del /Q
+    EXE = Dbl.exe
 else
     DELETE = rm -f
+    EXE = Dbl
 endif
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $(TARGET)
+	$(CC) $(CFLAGS) $^ -o $(EXE)
 
-%.o: Dbl.h
-	$(CC) $(CFLAGS) -Iinclude -c $< -o $@
+src/%.o: src/%.c include/Dbl.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(DELETE) $(OBJ) $(TARGET)
-
 ifeq ($(OS), Windows_NT)
-	$(DELETE) $(EXE)
+	-$(DELETE) $(OBJ) $(EXE)
+else
+	$(DELETE) $(OBJ) $(EXE)
 endif
 
-fix:
-	make clean
-	make run
-
-.PHONY: all clean fix run
-
 run: $(TARGET)
-	./$(TARGET)
+	./$(EXE)
+
+.PHONY: all clean run
