@@ -87,4 +87,7 @@ typedef struct {
     int count;
 } PlayerList;
 
+void createBoard(int width, int height);
+void printBoard(Board *board);
+
 #endif
